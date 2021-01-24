@@ -1,5 +1,5 @@
 import { dbService } from "fbase";
-import { React, useState } from "react";
+import React, { useState } from "react";
 
 const Nweet = ({nweetObj, isOwner}) => {
     const [editing, setEditing] = useState(false);
@@ -11,12 +11,11 @@ const Nweet = ({nweetObj, isOwner}) => {
         }
     };
     const toggleEditing = () => setEditing((prev) => !prev);
-    const onSubmit = (event) => {
-        event.preventDefalut();
-        console.log(newNweet);
-        // await dbService.doc(`nweets/${nweetObj.id}`).update({
-        //     text:newNweet
-        // });
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        await dbService.doc(`nweets/${nweetObj.id}`).update({
+            text:newNweet
+        });
         setEditing(false);
     };
     const onChange = (event) => {
@@ -40,6 +39,7 @@ const Nweet = ({nweetObj, isOwner}) => {
                     <input type="submit" value="Update Nweet" />
                 </form> 
                 <button onClick={toggleEditing}>Cancle</button>
+                    
             </>
             ) : (
             <>
