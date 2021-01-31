@@ -18,7 +18,7 @@ function App() {
   return (
     <> 
       {init ? <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "Initializing"}
-      <footer>&copy; {new Date().getFullYear()} Nwitter</footer>
+      {/* <footer>&copy; {new Date().getFullYear()} Nwitter</footer> */}
     </>
   );
 }
